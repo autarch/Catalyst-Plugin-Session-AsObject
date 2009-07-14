@@ -13,7 +13,7 @@ my %config;
 
     use MRO::Compat;
 
-    use base 'Catalyst::Plugin::SessionAsObject';
+    use base 'Catalyst::Plugin::Session::AsObject';
 
     sub new { bless {}, $_[0] }
     sub config { \%config }
@@ -33,8 +33,8 @@ my %config;
 }
 
 throws_ok( sub { MockContext->new()->setup() },
-           qr/\QMust provide an object_class in the session config when using Catalyst::Plugin::SessionAsObject/,
-           'cannot use SessionAsObject without setting object_class config item' );
+           qr/\QMust provide an object_class in the session config when using Catalyst::Plugin::Session::AsObject/,
+           'cannot use Session::AsObject without setting object_class config item' );
 
 $config{session}{object_class} = 'DoesNotExist';
 

@@ -1,4 +1,4 @@
-package Catalyst::Plugin::SessionAsObject;
+package Catalyst::Plugin::Session::AsObject;
 
 use strict;
 use warnings;
@@ -41,7 +41,7 @@ __END__
 
 =head1 NAME
 
-Catalyst::Plugin::SessionAsObject - Make your session data an object
+Catalyst::Plugin::Session::AsObject - Make your session data an object
 
 =head1 SYNOPSIS
 
@@ -50,7 +50,7 @@ Catalyst::Plugin::SessionAsObject - Make your session data an object
     use MyApp::Session;
 
     use Catalyst qw( Session
-                     SessionAsObject
+                     Session::AsObject
                      Session::Store::DBI
                      Session::State::Cookie
                    );

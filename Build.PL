@@ -4,7 +4,7 @@ use warnings;
 use Module::Build;
 
 my $builder = Module::Build->new
-    ( module_name        => 'Catalyst::Plugin::SessionAsObject',
+    ( module_name        => 'Catalyst::Plugin::Session::AsObject',
       license            => 'perl',
       requires           => { },
       build_requires     => { 'Test::More' => '0',

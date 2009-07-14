@@ -37,7 +37,7 @@
 # Avoid tarballs
 \.(?:tar|tgz|tar\.gz)$
 
-^Catalyst-Plugin-SessionAsObject-
+^Catalyst-Plugin-Session-AsObject-
 
 # No need to ship this
 \.shipit
