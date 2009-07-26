@@ -15,7 +15,7 @@ sub setup
 
     $c->maybe::next::method(@_);
 
-    my $class = $c->config->{session}{object_class};
+    my $class = $c->config()->{session}{object_class};
 
     die 'Must provide an object_class in the session config when using ' . __PACKAGE__
         unless defined $class;
@@ -37,7 +37,7 @@ sub session_object
 
     my $session = $self->session();
 
-    $session->{__object} ||= $self->config->{session}{object_class}->new();
+    $session->{__object} ||= $self->config()->{session}{object_class}->new();
 
     return $self->session()->{__object};
 }
