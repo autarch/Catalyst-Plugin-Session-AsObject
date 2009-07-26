@@ -9,7 +9,8 @@ use base 'Catalyst::Plugin::Session';
 
 use MRO::Compat;
 
-sub setup {
+sub setup
+{
     my $c = shift;
 
     $c->maybe::next::method(@_);
