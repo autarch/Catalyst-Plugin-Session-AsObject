@@ -23,7 +23,15 @@ sub setup {
         unless $class->can('new');
 }
 
-sub session_object {
+sub has_session_object
+{
+    my $self = shift;
+
+    return $self->sessionid() && $self->session()->{__object};
+}
+
+sub session_object
+{
     my $self = shift;
 
     my $session = $self->session();
