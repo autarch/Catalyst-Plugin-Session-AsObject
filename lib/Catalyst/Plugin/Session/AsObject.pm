@@ -100,6 +100,10 @@ This class provides the following methods:
 Returns the object stored in the session. If needed, a new object is
 created.
 
+=head2 $c->has_session_object()
+
+Returns true if there is an object already in the session.
+
 =head1 CONFIG
 
 This plugin has only configuration key, "object_class". This key
