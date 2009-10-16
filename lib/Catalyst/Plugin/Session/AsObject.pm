@@ -10,35 +10,35 @@ use base 'Catalyst::Plugin::Session';
 
 use MRO::Compat;
 
-sub setup
-{
+sub setup {
     my $self = shift;
 
     $self->maybe::next::method(@_);
 
     my $class = $self->_session_plugin_config()->{object_class};
 
-    die 'Must provide an object_class in the session config when using ' . __PACKAGE__
+    die 'Must provide an object_class in the session config when using '
+        . __PACKAGE__
         unless defined $class;
 
-    die "The object_class in the session config is either not loaded or does not have a new() method"
+    die
+        "The object_class in the session config is either not loaded or does not have a new() method"
         unless $class->can('new');
 }
 
-sub has_session_object
-{
+sub has_session_object {
     my $self = shift;
 
     return $self->sessionid() && $self->session()->{__object};
 }
 
-sub session_object
-{
+sub session_object {
     my $self = shift;
 
     my $session = $self->session();
 
-    $session->{__object} ||= $self->_session_plugin_config()->{object_class}->new();
+    $session->{__object}
+        ||= $self->_session_plugin_config()->{object_class}->new();
 
     return $self->session()->{__object};
 }
