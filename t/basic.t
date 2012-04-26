@@ -16,9 +16,15 @@ my %config;
     use base 'Catalyst::Plugin::Session::AsObject';
 
     sub new { bless {}, $_[0] }
-    sub config { \%config }
 
     sub debug { }
+
+    sub config { \%config }
+
+    my $log = Class::MOP::Class->create_anon_class(
+        superclasses => ['Moose::Object'] )->name()->new();
+
+    sub log { $log }
 
     my @mock_isa
         = qw( Catalyst::Plugin::Session::State Catalyst::Plugin::Session::Store );
@@ -26,7 +32,6 @@ my %config;
     sub isa {
         my $self  = shift;
         my $class = shift;
-
         grep { $_ eq $class } @mock_isa or $self->SUPER::isa($class);
     }
 }
