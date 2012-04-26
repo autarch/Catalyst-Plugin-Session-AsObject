@@ -1,5 +1,6 @@
 {{$NEXT}}
 
+- Fixed test failures with Catalyst::Plugin::Session 0.35.
 
 
 0.04   2009-12-08
