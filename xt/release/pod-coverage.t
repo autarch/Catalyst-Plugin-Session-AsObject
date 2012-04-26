@@ -9,6 +9,6 @@ use Test::Requires {
     'Test::Pod::Coverage' => '1.04',
 };
 
-all_pod_coverage_ok();
+all_pod_coverage_ok( { trustme => [qr/^setup$/] } );
 
 done_testing();
