@@ -34,6 +34,8 @@ my %config;
         my $class = shift;
         grep { $_ eq $class } @mock_isa or $self->SUPER::isa($class);
     }
+
+    sub get_session_data { }
 }
 
 like(
