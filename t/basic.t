@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More 0.88;
 use Test::Exception;
 
 my %config;
@@ -66,3 +66,5 @@ isa_ok(
     $c->session_object(), 'MySession',
     '$c->session_object'
 );
+
+done_testing();
