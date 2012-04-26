@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 
+use Test::Fatal;
 use Test::More 0.88;
-use Test::Exception;
 
 my %config;
 
@@ -36,16 +36,16 @@ my %config;
     }
 }
 
-throws_ok(
-    sub { MockContext->new()->setup() },
+like(
+    exception { MockContext->new()->setup() },
     qr/\QMust provide an object_class in the session config when using Catalyst::Plugin::Session::AsObject/,
     'cannot use Session::AsObject without setting object_class config item'
 );
 
 $config{'Plugin::Session'}{object_class} = 'DoesNotExist';
 
-throws_ok(
-    sub { MockContext->new()->setup() },
+like(
+    exception { MockContext->new()->setup() },
     qr/\QThe object_class in the session config is either not loaded or does not have a new() method/,
     'object_class must already be loaded'
 );
@@ -59,8 +59,9 @@ throws_ok(
 
 $config{'Plugin::Session'}{object_class} = 'MySession';
 
-lives_ok(
-    sub { MockContext->new()->setup() },
+is(
+    exception { MockContext->new()->setup() },
+    undef,
     'setup works when object_class exists'
 );
 
@@ -68,7 +69,8 @@ my $c = MockContext->new();
 $c->setup();
 
 isa_ok(
-    $c->session_object(), 'MySession',
+    $c->session_object(),
+    'MySession',
     '$c->session_object'
 );
 
