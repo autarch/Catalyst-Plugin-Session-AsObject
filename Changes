@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.05     2012-04-26
+
 - Fixed test failures with Catalyst::Plugin::Session 0.35. Reported by Andreas
   Koenig. RT #76811.
 
